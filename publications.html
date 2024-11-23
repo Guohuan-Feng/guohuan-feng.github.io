@@ -1,132 +1,136 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-<meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
   <meta name="author" content="Guohuan Feng">
 
 
 
-  <meta name="description" content="I am a computer science student at Oakland University, focusing on advanced topics such as edge computing, data center architecture, and intelligent system optimization, where I actively contribute to innovative research and development.">
+  <meta name="description"
+    content="I am a computer science student at Oakland University, focusing on advanced topics such as edge computing, data center architecture, and intelligent system optimization, where I actively contribute to innovative research and development.">
 
 
 
-<title>Guohuan Feng</title>
+  <title>Guohuan Feng</title>
 
 
 
-<link rel="icon" href="static/picture/favicon.ico">
+  <link rel="icon" href="static/picture/favicon.ico">
 
 
 
-<link rel="stylesheet" href="static/css/katex.min.css">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="static/css/css2.css" rel="stylesheet">
+  <link rel="stylesheet" href="static/css/katex.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="static/css/css2.css" rel="stylesheet">
 
 
-<link rel="stylesheet" href="static/css/main.css">
+  <link rel="stylesheet" href="static/css/main.css">
 
 
-<link rel="stylesheet" href="static/css/search.css">
+  <link rel="stylesheet" href="static/css/search.css">
 
 
 
-<script src="static/js/jquery.min.js"></script>
+  <script src="static/js/jquery.min.js"></script>
 
 
-<script src="static/js/iconify-icon.min.js"></script>
+  <script src="static/js/iconify-icon.min.js"></script>
 
 
-<script src="static/js/js.js"></script>
-<script>
-  tailwind.config = {
-    darkMode: "class",
-  };
-</script>
+  <script src="static/js/js.js"></script>
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+    };
+  </script>
 
-<script>
-  (function () {
-    const prefersDark =
-      window.matchMedia &&
-      window.matchMedia("(prefers-color-scheme: dark)").matches;
-    const setting = localStorage.getItem("hexo-color-scheme") || "auto";
-    if (setting === "dark" || (prefersDark && setting !== "light"))
-      document.documentElement.classList.toggle("dark", true);
-    let isDark = document.documentElement.classList.contains("dark");
-  })();
+  <script>
+    (function () {
+      const prefersDark =
+        window.matchMedia &&
+        window.matchMedia("(prefers-color-scheme: dark)").matches;
+      const setting = localStorage.getItem("hexo-color-scheme") || "auto";
+      if (setting === "dark" || (prefersDark && setting !== "light"))
+        document.documentElement.classList.toggle("dark", true);
+      let isDark = document.documentElement.classList.contains("dark");
+    })();
 
-  $(document).ready(function () {
-    // init icon
-    const prefersDark =
-      window.matchMedia &&
-      window.matchMedia("(prefers-color-scheme: dark)").matches;
-    const isDark = document.documentElement.classList.contains("dark");
-    $("#theme-icon").attr("icon", isDark ? "ic:round-dark-mode" : "ic:round-light-mode");
-
-    function toggleGiscusTheme() {
+    $(document).ready(function () {
+      // init icon
+      const prefersDark =
+        window.matchMedia &&
+        window.matchMedia("(prefers-color-scheme: dark)").matches;
       const isDark = document.documentElement.classList.contains("dark");
-      const giscusFrame = document.querySelector("iframe.giscus-frame");
-      if (giscusFrame) {
-        giscusFrame.contentWindow.postMessage(
-          {
-            giscus: {
-              setConfig: {
-                theme: isDark ? "dark" : "light",
+      $("#theme-icon").attr("icon", isDark ? "ic:round-dark-mode" : "ic:round-light-mode");
+
+      function toggleGiscusTheme() {
+        const isDark = document.documentElement.classList.contains("dark");
+        const giscusFrame = document.querySelector("iframe.giscus-frame");
+        if (giscusFrame) {
+          giscusFrame.contentWindow.postMessage(
+            {
+              giscus: {
+                setConfig: {
+                  theme: isDark ? "dark" : "light",
+                },
               },
             },
-          },
-          "https://giscus.app"
-        );
-      }
-    }
-
-
-    // toggle dark mode
-    function toggleDark() {
-      let isDark = document.documentElement.classList.contains("dark");
-      const setting = localStorage.getItem("hexo-color-scheme") || "auto";
-      isDark = !isDark;
-      document.documentElement.classList.toggle("dark", isDark);
-      $("#theme-icon").attr("icon", isDark ? "ic:round-dark-mode" : "ic:round-light-mode");
-      if (prefersDark === isDark) {
-        localStorage.setItem("hexo-color-scheme", "auto");
-      } else {
-        localStorage.setItem("hexo-color-scheme", isDark ? "dark" : "light");
-      }
-      toggleGiscusTheme();
-    }
-    $("#toggle-dark").click(toggleDark);
-
-    // listen dark mode change
-    window
-      .matchMedia("(prefers-color-scheme: dark)")
-      .addEventListener("change", (e) => {
-        const setting = localStorage.getItem("hexo-color-scheme") || "auto";
-        if (setting === "auto") {
-          document.documentElement.classList.toggle("dark", e.matches);
-          $("#theme-icon").attr(
-            "icon",
-            e.matches ? "ic:round-dark-mode" : "ic:round-light-mode"
+            "https://giscus.app"
           );
-          toggleGiscusTheme();
         }
-      });
-  });
-</script>
+      }
+
+
+      // toggle dark mode
+      function toggleDark() {
+        let isDark = document.documentElement.classList.contains("dark");
+        const setting = localStorage.getItem("hexo-color-scheme") || "auto";
+        isDark = !isDark;
+        document.documentElement.classList.toggle("dark", isDark);
+        $("#theme-icon").attr("icon", isDark ? "ic:round-dark-mode" : "ic:round-light-mode");
+        if (prefersDark === isDark) {
+          localStorage.setItem("hexo-color-scheme", "auto");
+        } else {
+          localStorage.setItem("hexo-color-scheme", isDark ? "dark" : "light");
+        }
+        toggleGiscusTheme();
+      }
+      $("#toggle-dark").click(toggleDark);
+
+      // listen dark mode change
+      window
+        .matchMedia("(prefers-color-scheme: dark)")
+        .addEventListener("change", (e) => {
+          const setting = localStorage.getItem("hexo-color-scheme") || "auto";
+          if (setting === "auto") {
+            document.documentElement.classList.toggle("dark", e.matches);
+            $("#theme-icon").attr(
+              "icon",
+              e.matches ? "ic:round-dark-mode" : "ic:round-light-mode"
+            );
+            toggleGiscusTheme();
+          }
+        });
+    });
+  </script>
 
 
 
 
-<meta name="generator" content="Hexo 7.3.0"></head>
+  <meta name="generator" content="Hexo 7.3.0">
+</head>
+
 <body class="
     bg-[var(--c-0)]
     text-[var(--c-80)]
   ">
   <!-- The navigation bar -->
-<header class="
+  <header class="
     flex flex-row items-center
     w-full
     pr-4
@@ -139,10 +143,10 @@
     h-[var(--h-header)]
     text-[var(--c-80)]
 ">
-  <!-- Left part -->
-  <div class="overflow-hidden h-full flex flex-row items-center">
-    <!-- Site Title on the top left -->
-    <a href="index.html" class="
+    <!-- Left part -->
+    <div class="overflow-hidden h-full flex flex-row items-center">
+      <!-- Site Title on the top left -->
+      <a href="index.html" class="
             whitespace-nowrap
             text-2xl
             text-[var(--c-theme)]
@@ -152,22 +156,22 @@
             bg-gradient-to-r from-cyan-500
             to-blue-500 bg-clip-text text-transparent
           ">
-      Guohuan Feng
-    </a>
-  </div>
-  <!-- Div for pushing items to both sides -->
-  <div class="flex-1"></div>
-  <!-- Right part -->
-  <div class="flex flex-row items-center z-20 h-full">
-    <!-- Page links -->
-    <div class="hidden sm:flex flex-row h-full">
-      
-        
-        
-          
-          
-        
-      <a href="publications.html" class="
+        Guohuan Feng
+      </a>
+    </div>
+    <!-- Div for pushing items to both sides -->
+    <div class="flex-1"></div>
+    <!-- Right part -->
+    <div class="flex flex-row items-center z-20 h-full">
+      <!-- Page links -->
+      <div class="hidden sm:flex flex-row h-full">
+
+
+
+
+
+
+        <a href="publications.html" class="
                         flex flex-row items-center
                         gap-1
                         hover:underline
@@ -181,19 +185,19 @@
                         group
                         whitespace-nowrap
                     ">
-        
-        <iconify-icon class="group-hover:scale-125 transition-transform" icon="mingcute:science-fill" width="22">
-        </iconify-icon>
-        
-        
-      </a>
-      
-        
-        
-          
-          
-        
-      <a href="about.html" class="
+
+          <iconify-icon class="group-hover:scale-125 transition-transform" icon="mingcute:science-fill" width="22">
+          </iconify-icon>
+
+
+        </a>
+
+
+
+
+
+
+        <a href="about.html" class="
                         flex flex-row items-center
                         gap-1
                         hover:underline
@@ -207,18 +211,18 @@
                         group
                         whitespace-nowrap
                     ">
-        
-        <iconify-icon class="group-hover:scale-125 transition-transform" icon="mingcute:user-info-fill" width="22">
-        </iconify-icon>
-        
-        
-      </a>
-      
-        
-        
-          
-          
-        
+
+          <iconify-icon class="group-hover:scale-125 transition-transform" icon="mingcute:user-info-fill" width="22">
+          </iconify-icon>
+
+
+        </a>
+
+
+
+
+
+        <!--
       <a href="/./categories" class="
                         flex flex-row items-center
                         gap-1
@@ -240,12 +244,12 @@
         
       </a>
       
-        
-        
-          
-          
-        
-      <a href="/./tags" class="
+    -->
+
+
+
+
+        <a href="/./tags" class="
                         flex flex-row items-center
                         gap-1
                         hover:underline
@@ -259,19 +263,19 @@
                         group
                         whitespace-nowrap
                     ">
-        
-        <iconify-icon class="group-hover:scale-125 transition-transform" icon="mingcute:tag-fill" width="22">
-        </iconify-icon>
-        
-        
-      </a>
-      
-        
-        
-          
-          
-        
-      <a href="" class="
+
+          <iconify-icon class="group-hover:scale-125 transition-transform" icon="mingcute:tag-fill" width="22">
+          </iconify-icon>
+
+
+        </a>
+
+
+
+
+
+
+        <a href="" class="
                         flex flex-row items-center
                         gap-1
                         hover:underline
@@ -285,44 +289,46 @@
                         group
                         whitespace-nowrap
                     ">
-        
-        <iconify-icon class="group-hover:scale-125 transition-transform" icon="mingcute:home-2-fill" width="22">
-        </iconify-icon>
-        
-        
-      </a>
-      
-    </div>
-    <!-- Icons on the right -->
-    <div class="flex flex-row items-center justify-center">
 
-      <!-- TODO: Add search icon here -->
+          <iconify-icon class="group-hover:scale-125 transition-transform" icon="mingcute:home-2-fill" width="22">
+          </iconify-icon>
 
-      <!-- Dark/light toggle icon -->
-      <a class="flex group p-1" title="toggle theme" id="toggle-dark">
-        <iconify-icon class="transition-transform
+
+        </a>
+
+      </div>
+      <!-- Icons on the right -->
+      <div class="flex flex-row items-center justify-center">
+
+        <!-- TODO: Add search icon here -->
+
+        <!-- Dark/light toggle icon -->
+        <a class="flex group p-1" title="toggle theme" id="toggle-dark">
+          <iconify-icon class="transition-transform
                     group-hover:rotate-[45deg]
                     group-hover:scale-125
                     group-hover:text-[var(--c-theme)]" width="24" id="theme-icon">
-        </iconify-icon>
-      </a>
-      <!-- Icon for dropout menu on small screens -->
-      <div class="flex flex-row items-center justify-center p-1 sm:hidden">
-        <a class="w-6 h-6" aria-hidden="true" id="open-menu">
-          <iconify-icon width="24" icon="mingcute:menu-fill" class="transition-transform hover:scale-125 hover:rotate-[5deg]">
           </iconify-icon>
         </a>
-        <a class="w-6 h-6 hidden" aria-hidden="true" id="close-menu">
-          <iconify-icon width="24" icon="mingcute:close-circle-fill" class="transition-transform hover:scale-125 hover:rotate-[80deg]">
-          </iconify-icon>
-        </a>
+        <!-- Icon for dropout menu on small screens -->
+        <div class="flex flex-row items-center justify-center p-1 sm:hidden">
+          <a class="w-6 h-6" aria-hidden="true" id="open-menu">
+            <iconify-icon width="24" icon="mingcute:menu-fill"
+              class="transition-transform hover:scale-125 hover:rotate-[5deg]">
+            </iconify-icon>
+          </a>
+          <a class="w-6 h-6 hidden" aria-hidden="true" id="close-menu">
+            <iconify-icon width="24" icon="mingcute:close-circle-fill"
+              class="transition-transform hover:scale-125 hover:rotate-[80deg]">
+            </iconify-icon>
+          </a>
+        </div>
       </div>
     </div>
-  </div>
-</header>
+  </header>
 
-<!-- Dropdown menu on small screens -->
-<div id="menu-panel" class="
+  <!-- Dropdown menu on small screens -->
+  <div id="menu-panel" class="
         h-0
         overflow-hidden
         sm:hidden
@@ -330,7 +336,7 @@
         z-10
         rounded
     ">
-  <div id="menu-content" class="
+    <div id="menu-content" class="
         flex
         flex-col
         font-bold
@@ -345,10 +351,10 @@
         transition-transform
         duration-200
         ">
-    
-    
-    
-    <a href="publications.html" class="
+
+
+
+      <a href="publications.html" class="
                 flex flex-row items-center
                 gap-2
                 h-12
@@ -358,17 +364,17 @@
                 py-1
                 rounded-lg
             ">
-      <iconify-icon icon="mingcute:science-fill" width="22">
-      </iconify-icon>
-      <p>
-        
-      </p>
-    </a>
-    
-    
-    
-    
-    <a href="about.html" class="
+        <iconify-icon icon="mingcute:science-fill" width="22">
+        </iconify-icon>
+        <p>
+
+        </p>
+      </a>
+
+
+
+
+      <a href="about.html" class="
                 flex flex-row items-center
                 gap-2
                 h-12
@@ -378,17 +384,17 @@
                 py-1
                 rounded-lg
             ">
-      <iconify-icon icon="mingcute:user-info-fill" width="22">
-      </iconify-icon>
-      <p>
-        
-      </p>
-    </a>
-    
-    
-    
-    
-    <a href="/./categories" class="
+        <iconify-icon icon="mingcute:user-info-fill" width="22">
+        </iconify-icon>
+        <p>
+
+        </p>
+      </a>
+
+
+      <!--
+
+      <a href="/./categories" class="
                 flex flex-row items-center
                 gap-2
                 h-12
@@ -398,17 +404,17 @@
                 py-1
                 rounded-lg
             ">
-      <iconify-icon icon="mingcute:classify-2-fill" width="22">
-      </iconify-icon>
-      <p>
-        
-      </p>
-    </a>
-    
-    
-    
-    
-    <a href="/./tags" class="
+        <iconify-icon icon="mingcute:classify-2-fill" width="22">
+        </iconify-icon>
+        <p>
+
+        </p>
+      </a>
+
+    -->
+
+
+      <a href="/./tags" class="
                 flex flex-row items-center
                 gap-2
                 h-12
@@ -418,17 +424,17 @@
                 py-1
                 rounded-lg
             ">
-      <iconify-icon icon="mingcute:tag-fill" width="22">
-      </iconify-icon>
-      <p>
-        
-      </p>
-    </a>
-    
-    
-    
-    
-    <a href="" class="
+        <iconify-icon icon="mingcute:tag-fill" width="22">
+        </iconify-icon>
+        <p>
+
+        </p>
+      </a>
+
+
+
+
+      <a href="" class="
                 flex flex-row items-center
                 gap-2
                 h-12
@@ -438,162 +444,171 @@
                 py-1
                 rounded-lg
             ">
-      <iconify-icon icon="mingcute:home-2-fill" width="22">
-      </iconify-icon>
-      <p>
-        
-      </p>
-    </a>
-    
-    
+        <iconify-icon icon="mingcute:home-2-fill" width="22">
+        </iconify-icon>
+        <p>
+
+        </p>
+      </a>
+
+
+    </div>
   </div>
-</div>
 
   <main>
     <section class="px-6 max-w-prose mx-auto md:px-0">
-        <!-- Post header before content -->
-        <header class="py-4">
-          <div class="flex flex-col gap-2 pt-4 md:pt-6">
-            <!-- Title -->
-            <div id="article-title" class="leading-snug">
-              <p class="text-3xl font-bold text-[var(--c-100)] mb-4">My Publications</p>
-            </div>
-            <!-- Meta data -->
-            <div>
-              <section class="
+      <!-- Post header before content -->
+      <header class="py-4">
+        <div class="flex flex-col gap-2 pt-4 md:pt-6">
+          <!-- Title -->
+          <div id="article-title" class="leading-snug">
+            <p class="text-3xl font-bold text-[var(--c-100)] mb-4">My Publications</p>
+          </div>
+          <!-- Meta data -->
+          <div>
+            <section class="
                 flex flex-col gap-x-2 gap-y-1 text-sm text-[var(--c-100)]">
-                <div class="flex flex-wrap items-center gap-x-2 gap-y-1">
-                  <!-- Dates -->
-                  <div class="flex items-center gap-1">
-                    <iconify-icon width="18" icon="mingcute:add-circle-fill"></iconify-icon>
-                    Created: <time class="w-max">2023-09-16</time>
-                  </div>
-                  <div class="flex items-center gap-1">
-                    <iconify-icon width="18" icon="mingcute:refresh-3-fill"></iconify-icon>
-                    Edited: <time class="w-max">2024-10-10</time>
-                  </div>
+              <div class="flex flex-wrap items-center gap-x-2 gap-y-1">
+                <!-- Dates -->
+                <div class="flex items-center gap-1">
+                  <iconify-icon width="18" icon="mingcute:add-circle-fill"></iconify-icon>
+                  Created: <time class="w-max">2023-09-16</time>
                 </div>
-                <div class="flex flex-wrap items-center gap-x-3 gap-y-3">
-                  <!-- Author -->
-                  
-      
-                  <!-- Word count -->
-                  <span class="flex items-center gap-1">
-                    <iconify-icon width="18" icon="mingcute:book-2-fill"></iconify-icon>
-                    <span>116 words, 1 min</span>
-                  </span>
-                  <!-- Categories -->
-                  
+                <div class="flex items-center gap-1">
+                  <iconify-icon width="18" icon="mingcute:refresh-3-fill"></iconify-icon>
+                  Edited: <time class="w-max">2024-10-10</time>
                 </div>
-              </section>
-            </div>
-            <!-- tags -->
-            <div>
-              
-      <div class="flex flex-wrap gap-1">
-        
-      </div>
+              </div>
+              <div class="flex flex-wrap items-center gap-x-3 gap-y-3">
+                <!-- Author -->
+
+
+                <!-- Word count -->
+                <span class="flex items-center gap-1">
+                  <iconify-icon width="18" icon="mingcute:book-2-fill"></iconify-icon>
+                  <span>116 words, 1 min</span>
+                </span>
+                <!-- Categories -->
+
+              </div>
+            </section>
+          </div>
+          <!-- tags -->
+          <div>
+
+            <div class="flex flex-wrap gap-1">
+
             </div>
           </div>
-        </header>
-        <!-- content -->
-        <article class="post-content prose m-auto dark:prose-invert">
-          <p>List of all my publications:</p>
-      <p><strong>2024</strong>:</p>
-      <ul>
-      <li>
-      <p>Stuffed Mamba: State Collapse and State Capacity of RNN-Based Long-Context Modeling</p>
-      <ul>
-      <li><a target="_blank" rel="noopener" href="https://www.github.com/thunlp/stuffed-mamba">Code</a></li>
-      </ul>
-      </li>
-      <li>
-      <p>Multi-Modal Multi-Granularity Tokenizer for Chu Bamboo Slips</p>
-      <ul>
-      <li><a target="_blank" rel="noopener" href="https://www.github.com/thunlp/Chujian">Code</a></li>
-      </ul>
-      </li>
-      </ul>
-      <p><strong>2023</strong>:</p>
-      <ul>
-      <li>
-      <p><a href="/2024/01/10/InfiniteBench/">$\infty$-Bench: Extending Long Context Evaluation to Over 100K</a></p>
-      <ul>
-      <li>ACL 2024</li>
-      <li><a target="_blank" rel="noopener" href="http://www.github.com/OpenBMB/InfiniteBench">Code</a></li>
-      </ul>
-      </li>
-      <li>
-      <p><a href="/2023/09/16/CFDBench/">CFDBench: A Comprehensive Benchmark for Machine Learning Methods in Fluid Dynamics</a></p>
-      <ul>
-      <li><a target="_blank" rel="noopener" href="https://www.github.com/luo-yining/CFDBench">Code</a> | <a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/656033757">知乎</a> | <a target="_blank" rel="noopener" href="https://www.preprints.org/manuscript/202309.1550/v1">Paper (preprints.org)</a></li>
-      </ul>
-      </li>
-      <li>
-      <p><a href="/2024/03/14/EREN/">Robust and Scalable Model Editing for Large Language Models</a></p>
-      <ul>
-      <li>COLING 2024</li>
-      <li><a target="_blank" rel="noopener" href="https://www.github.com/chen-yingfa/eren">Code</a> | <a href="...">Paper (upcoming)</a></li>
-      </ul>
-      </li>
-      <li>
-      <p>READIN: A Chinese Multi-Task Benchmark with Realistic and Diverse Input Noises</p>
-      <ul>
-      <li>ACL 2023</li>
-      <li><a target="_blank" rel="noopener" href="https://www.github.com/THUNLP/READIN">Code</a> | <a target="_blank" rel="noopener" href="https://aclanthology.org/2023.acl-long.460/">Paper</a></li>
-      </ul>
-      </li>
-      <li>
-      <p>Sub-Character Tokenization for Chinese Pretrained Language Models</p>
-      <ul>
-      <li>ACL 2023</li>
-      <li><a target="_blank" rel="noopener" href="https://www.github.com/THUNLP/SubCharTokenization">Code</a> | <a target="_blank" rel="noopener" href="https://aclanthology.org/2023.tacl-1.28/">Paper</a></li>
-      </ul>
-      </li>
-      </ul>
-      <p><strong>2022</strong>:</p>
-      <ul>
-      <li>BMCook: A Task-agnostic Compression Toolkit for Big Models
-      <ul>
-      <li>EMNLP 2022 Demo</li>
-      <li><a target="_blank" rel="noopener" href="https://www.github.com/OpenBMB/BMCook">Code</a></li>
-      </ul>
-      </li>
-      </ul>
-      
-        </article>
-      
-        <!-- prev and next -->
-        <div class="flex justify-between mt-4 pt-4
+        </div>
+      </header>
+      <!-- content -->
+      <article class="post-content prose m-auto dark:prose-invert">
+        <p>List of all my publications:</p>
+        <p><strong>2024</strong>:</p>
+        <ul>
+          <li>
+            <p>Stuffed Mamba: State Collapse and State Capacity of RNN-Based Long-Context Modeling</p>
+            <ul>
+              <li><a target="_blank" rel="noopener" href="https://www.github.com/thunlp/stuffed-mamba">Code</a></li>
+            </ul>
+          </li>
+          <li>
+            <p>Multi-Modal Multi-Granularity Tokenizer for Chu Bamboo Slips</p>
+            <ul>
+              <li><a target="_blank" rel="noopener" href="https://www.github.com/thunlp/Chujian">Code</a></li>
+            </ul>
+          </li>
+        </ul>
+        <p><strong>2023</strong>:</p>
+        <ul>
+          <li>
+            <p><a href="/2024/01/10/InfiniteBench/">$\infty$-Bench: Extending Long Context Evaluation to Over 100K</a>
+            </p>
+            <ul>
+              <li>ACL 2024</li>
+              <li><a target="_blank" rel="noopener" href="http://www.github.com/OpenBMB/InfiniteBench">Code</a></li>
+            </ul>
+          </li>
+          <li>
+            <p><a href="/2023/09/16/CFDBench/">CFDBench: A Comprehensive Benchmark for Machine Learning Methods in Fluid
+                Dynamics</a></p>
+            <ul>
+              <li><a target="_blank" rel="noopener" href="https://www.github.com/luo-yining/CFDBench">Code</a> | <a
+                  target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/656033757">知乎</a> | <a
+                  target="_blank" rel="noopener" href="https://www.preprints.org/manuscript/202309.1550/v1">Paper
+                  (preprints.org)</a></li>
+            </ul>
+          </li>
+          <li>
+            <p><a href="/2024/03/14/EREN/">Robust and Scalable Model Editing for Large Language Models</a></p>
+            <ul>
+              <li>COLING 2024</li>
+              <li><a target="_blank" rel="noopener" href="https://www.github.com/chen-yingfa/eren">Code</a> | <a
+                  href="...">Paper (upcoming)</a></li>
+            </ul>
+          </li>
+          <li>
+            <p>READIN: A Chinese Multi-Task Benchmark with Realistic and Diverse Input Noises</p>
+            <ul>
+              <li>ACL 2023</li>
+              <li><a target="_blank" rel="noopener" href="https://www.github.com/THUNLP/READIN">Code</a> | <a
+                  target="_blank" rel="noopener" href="https://aclanthology.org/2023.acl-long.460/">Paper</a></li>
+            </ul>
+          </li>
+          <li>
+            <p>Sub-Character Tokenization for Chinese Pretrained Language Models</p>
+            <ul>
+              <li>ACL 2023</li>
+              <li><a target="_blank" rel="noopener" href="https://www.github.com/THUNLP/SubCharTokenization">Code</a> |
+                <a target="_blank" rel="noopener" href="https://aclanthology.org/2023.tacl-1.28/">Paper</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+        <p><strong>2022</strong>:</p>
+        <ul>
+          <li>BMCook: A Task-agnostic Compression Toolkit for Big Models
+            <ul>
+              <li>EMNLP 2022 Demo</li>
+              <li><a target="_blank" rel="noopener" href="https://www.github.com/OpenBMB/BMCook">Code</a></li>
+            </ul>
+          </li>
+        </ul>
+
+      </article>
+
+      <!-- prev and next -->
+      <div class="flex justify-between mt-4 pt-4
           border-t border-[var(--c-sep)] text-sm
           gap-2 text-[var(--c-50)]
         ">
-          <div>
-            
-          </div>
-          <div>
-            
-          </div>
+        <div>
+
         </div>
-      
-        <!-- comment -->
-        <div class="article-comments mt-12">
-          
-      
+        <div>
+
         </div>
-      </section>
+      </div>
+
+      <!-- comment -->
+      <div class="article-comments mt-12">
+
+
+      </div>
+    </section>
   </main>
   <footer class="flex flex-col mt-18 mb-12 items-center
   text-[var(--c-50)] text-sm">
-  <div class="flex flex-row items-center my-12">
-    
-    
-        
-        
-            
-            
-        
-        <a class="
+    <div class="flex flex-row items-center my-12">
+
+
+
+
+
+
+
+      <a class="
             hover:text-[var(--c-theme)]
             hover:bg-[var(--c-20)]
             rounded-lg
@@ -601,15 +616,15 @@
             my-1
             flex flex-row items-center
             group" title="Github" target="_blank" rel="noopener" href="https://github.com/Guohuan-Feng">
-            <iconify-icon width="28" icon="mingcute:github-fill"></iconify-icon>
-        </a>
-    
-        
-        
-            
-            
-        
-        <a class="
+        <iconify-icon width="28" icon="mingcute:github-fill"></iconify-icon>
+      </a>
+
+
+
+
+
+
+      <a class="
             hover:text-[var(--c-theme)]
             hover:bg-[var(--c-20)]
             rounded-lg
@@ -617,67 +632,68 @@
             my-1
             flex flex-row items-center
             group" title="Linkedin" target="_blank" rel="noopener" href="https://www.linkedin.com/in/guohuanfeng">
-            <iconify-icon width="28" icon="mingcute:linkedin-fill"></iconify-icon>
-        </a>
-    
-        
-        
-            
-            
-        
-        <a class="
+        <iconify-icon width="28" icon="mingcute:linkedin-fill"></iconify-icon>
+      </a>
+
+
+
+
+
+
+      <a class="
             hover:text-[var(--c-theme)]
             hover:bg-[var(--c-20)]
             rounded-lg
             p-2
             my-1
             flex flex-row items-center
-            group" title="Google Scholar" target="_blank" rel="noopener" href="https://scholar.google.com/citations?user=wcs6foEAAAAJ&amp;hl=en">
-            <iconify-icon width="28" icon="mingcute:book-6-fill"></iconify-icon>
-        </a>
-    
-
-  </div>
-  <!-- busuanzi -->
-  <div class="mb-6">
-    
-<script async src="static/js/busuanzi.pure.mini.js"></script>
-<!-- Busuanzi Analytics -->
-<div class="flex flex-col items-center mb-2">
-  <div class="flex flex-row items-center">
-    <iconify-icon width="16" icon="ic:round-person" width="18"></iconify-icon>
-    <span class="mr-1">访客 Visitors: </span>
-    <span id="busuanzi_value_site_uv"></span>
-  </div>
-  <div class="flex flex-row items-center">
-    <iconify-icon width="16" icon="carbon:view-filled" width="18"></iconify-icon>
-    <span class="mx-1">浏览量 Page Views:</span>
-    <span id="busuanzi_value_site_pv"></span>
-  </div>
-</div>
-<!-- End Busuanzi Analytics -->
+            group" title="Google Scholar" target="_blank" rel="noopener"
+        href="https://scholar.google.com/citations?user=wcs6foEAAAAJ&amp;hl=en">
+        <iconify-icon width="28" icon="mingcute:book-6-fill"></iconify-icon>
+      </a>
 
 
-  </div>
-  <!-- copyright -->
-  <div class="flex flex-row items-center gap-2">
-    <a class="hover:underline" target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
-      CC BY-NC-SA 4.0
-    </a>
-    <span>© 2022-2024</span>
-    <a class="hover:underline" href="https://github.com/Guohuan-Feng" target="_blank" rel="noopener noreferrer"></a>
-  </div>
-  <!-- powered by -->
-  <div class="flex items-center gap-1">
-    <span>Powered by</span>
-    <a class="hover:underline" href="https://hexo.io/" target="_blank" rel="noopener noreferrer">Hexo</a>
-    <span>&</span>
-    <a href="https://github.com/Guohuan-Feng" class="hover:underline" target="_blank" rel="noopener noreferrer">
+    </div>
+    <!-- busuanzi -->
+    <div class="mb-6">
 
-    </a>
-  </div>
+      <script async src="static/js/busuanzi.pure.mini.js"></script>
+      <!-- Busuanzi Analytics -->
+      <div class="flex flex-col items-center mb-2">
+        <div class="flex flex-row items-center">
+          <iconify-icon width="16" icon="ic:round-person" width="18"></iconify-icon>
+          <span class="mr-1">访客 Visitors: </span>
+          <span id="busuanzi_value_site_uv"></span>
+        </div>
+        <div class="flex flex-row items-center">
+          <iconify-icon width="16" icon="carbon:view-filled" width="18"></iconify-icon>
+          <span class="mx-1">浏览量 Page Views:</span>
+          <span id="busuanzi_value_site_pv"></span>
+        </div>
+      </div>
+      <!-- End Busuanzi Analytics -->
 
-</footer>
+
+    </div>
+    <!-- copyright -->
+    <div class="flex flex-row items-center gap-2">
+      <a class="hover:underline" target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+        CC BY-NC-SA 4.0
+      </a>
+      <span>© 2022-2024</span>
+      <a class="hover:underline" href="https://github.com/Guohuan-Feng" target="_blank" rel="noopener noreferrer"></a>
+    </div>
+    <!-- powered by -->
+    <div class="flex items-center gap-1">
+      <span>Powered by</span>
+      <a class="hover:underline" href="https://hexo.io/" target="_blank" rel="noopener noreferrer">Hexo</a>
+      <span>&</span>
+      <a href="https://github.com/Guohuan-Feng" class="hover:underline" target="_blank" rel="noopener noreferrer">
+
+      </a>
+    </div>
+
+  </footer>
 
   <div class="
     back-to-top
@@ -698,8 +714,8 @@
       <iconify-icon width="18" icon="mingcute:arrow-to-up-fill" id="go-top"></iconify-icon>
     </span>
   </div>
-  
-<script src="static/js/main.js"></script>
+
+  <script src="static/js/main.js"></script>
 
 
   <div class="fixed top-0 bottom-0 left-0 right-0 pointer-events-none print:hidden" id="maple"></div>
