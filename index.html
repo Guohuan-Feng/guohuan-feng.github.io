@@ -1,132 +1,136 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-<meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
   <meta name="author" content="Guohuan Feng">
 
 
 
-  <meta name="description" content="I am a computer science student at Oakland University, focusing on advanced topics such as edge computing, data center architecture, and intelligent system optimization, where I actively contribute to innovative research and development.">
+  <meta name="description"
+    content="I am a computer science student at Oakland University, focusing on advanced topics such as edge computing, data center architecture, and intelligent system optimization, where I actively contribute to innovative research and development.">
 
 
 
-<title>Guohuan Feng</title>
+  <title>Guohuan Feng</title>
 
 
 
-<link rel="icon" href="static/picture/favicon.ico">
+  <link rel="icon" href="static/picture/favicon.ico">
 
 
 
-<link rel="stylesheet" href="static/css/katex.min.css">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="static/css/css2.css" rel="stylesheet">
+  <link rel="stylesheet" href="static/css/katex.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="static/css/css2.css" rel="stylesheet">
 
 
-<link rel="stylesheet" href="static/css/main.css">
+  <link rel="stylesheet" href="static/css/main.css">
 
 
-<link rel="stylesheet" href="static/css/search.css">
+  <link rel="stylesheet" href="static/css/search.css">
 
 
 
-<script src="static/js/jquery.min.js"></script>
+  <script src="static/js/jquery.min.js"></script>
 
 
-<script src="static/js/iconify-icon.min.js"></script>
+  <script src="static/js/iconify-icon.min.js"></script>
 
 
-<script src="static/js/js.js"></script>
-<script>
-  tailwind.config = {
-    darkMode: "class",
-  };
-</script>
+  <script src="static/js/js.js"></script>
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+    };
+  </script>
 
-<script>
-  (function () {
-    const prefersDark =
-      window.matchMedia &&
-      window.matchMedia("(prefers-color-scheme: dark)").matches;
-    const setting = localStorage.getItem("hexo-color-scheme") || "auto";
-    if (setting === "dark" || (prefersDark && setting !== "light"))
-      document.documentElement.classList.toggle("dark", true);
-    let isDark = document.documentElement.classList.contains("dark");
-  })();
+  <script>
+    (function () {
+      const prefersDark =
+        window.matchMedia &&
+        window.matchMedia("(prefers-color-scheme: dark)").matches;
+      const setting = localStorage.getItem("hexo-color-scheme") || "auto";
+      if (setting === "dark" || (prefersDark && setting !== "light"))
+        document.documentElement.classList.toggle("dark", true);
+      let isDark = document.documentElement.classList.contains("dark");
+    })();
 
-  $(document).ready(function () {
-    // init icon
-    const prefersDark =
-      window.matchMedia &&
-      window.matchMedia("(prefers-color-scheme: dark)").matches;
-    const isDark = document.documentElement.classList.contains("dark");
-    $("#theme-icon").attr("icon", isDark ? "ic:round-dark-mode" : "ic:round-light-mode");
-
-    function toggleGiscusTheme() {
+    $(document).ready(function () {
+      // init icon
+      const prefersDark =
+        window.matchMedia &&
+        window.matchMedia("(prefers-color-scheme: dark)").matches;
       const isDark = document.documentElement.classList.contains("dark");
-      const giscusFrame = document.querySelector("iframe.giscus-frame");
-      if (giscusFrame) {
-        giscusFrame.contentWindow.postMessage(
-          {
-            giscus: {
-              setConfig: {
-                theme: isDark ? "dark" : "light",
+      $("#theme-icon").attr("icon", isDark ? "ic:round-dark-mode" : "ic:round-light-mode");
+
+      function toggleGiscusTheme() {
+        const isDark = document.documentElement.classList.contains("dark");
+        const giscusFrame = document.querySelector("iframe.giscus-frame");
+        if (giscusFrame) {
+          giscusFrame.contentWindow.postMessage(
+            {
+              giscus: {
+                setConfig: {
+                  theme: isDark ? "dark" : "light",
+                },
               },
             },
-          },
-          "https://giscus.app"
-        );
-      }
-    }
-
-
-    // toggle dark mode
-    function toggleDark() {
-      let isDark = document.documentElement.classList.contains("dark");
-      const setting = localStorage.getItem("hexo-color-scheme") || "auto";
-      isDark = !isDark;
-      document.documentElement.classList.toggle("dark", isDark);
-      $("#theme-icon").attr("icon", isDark ? "ic:round-dark-mode" : "ic:round-light-mode");
-      if (prefersDark === isDark) {
-        localStorage.setItem("hexo-color-scheme", "auto");
-      } else {
-        localStorage.setItem("hexo-color-scheme", isDark ? "dark" : "light");
-      }
-      toggleGiscusTheme();
-    }
-    $("#toggle-dark").click(toggleDark);
-
-    // listen dark mode change
-    window
-      .matchMedia("(prefers-color-scheme: dark)")
-      .addEventListener("change", (e) => {
-        const setting = localStorage.getItem("hexo-color-scheme") || "auto";
-        if (setting === "auto") {
-          document.documentElement.classList.toggle("dark", e.matches);
-          $("#theme-icon").attr(
-            "icon",
-            e.matches ? "ic:round-dark-mode" : "ic:round-light-mode"
+            "https://giscus.app"
           );
-          toggleGiscusTheme();
         }
-      });
-  });
-</script>
+      }
+
+
+      // toggle dark mode
+      function toggleDark() {
+        let isDark = document.documentElement.classList.contains("dark");
+        const setting = localStorage.getItem("hexo-color-scheme") || "auto";
+        isDark = !isDark;
+        document.documentElement.classList.toggle("dark", isDark);
+        $("#theme-icon").attr("icon", isDark ? "ic:round-dark-mode" : "ic:round-light-mode");
+        if (prefersDark === isDark) {
+          localStorage.setItem("hexo-color-scheme", "auto");
+        } else {
+          localStorage.setItem("hexo-color-scheme", isDark ? "dark" : "light");
+        }
+        toggleGiscusTheme();
+      }
+      $("#toggle-dark").click(toggleDark);
+
+      // listen dark mode change
+      window
+        .matchMedia("(prefers-color-scheme: dark)")
+        .addEventListener("change", (e) => {
+          const setting = localStorage.getItem("hexo-color-scheme") || "auto";
+          if (setting === "auto") {
+            document.documentElement.classList.toggle("dark", e.matches);
+            $("#theme-icon").attr(
+              "icon",
+              e.matches ? "ic:round-dark-mode" : "ic:round-light-mode"
+            );
+            toggleGiscusTheme();
+          }
+        });
+    });
+  </script>
 
 
 
 
-<meta name="generator" content="Hexo 7.3.0"></head>
+  <meta name="generator" content="Hexo 7.3.0">
+</head>
+
 <body class="
     bg-[var(--c-0)]
     text-[var(--c-80)]
   ">
   <!-- The navigation bar -->
-<header class="
+  <header class="
     flex flex-row items-center
     w-full
     pr-4
@@ -139,10 +143,10 @@
     h-[var(--h-header)]
     text-[var(--c-80)]
 ">
-  <!-- Left part -->
-  <div class="overflow-hidden h-full flex flex-row items-center">
-    <!-- Site Title on the top left -->
-    <a href="index.html" class="
+    <!-- Left part -->
+    <div class="overflow-hidden h-full flex flex-row items-center">
+      <!-- Site Title on the top left -->
+      <a href="index.html" class="
             whitespace-nowrap
             text-2xl
             text-[var(--c-theme)]
@@ -152,177 +156,179 @@
             bg-gradient-to-r from-cyan-500
             to-blue-500 bg-clip-text text-transparent
           ">
-      Guohuan Feng
-    </a>
-  </div>
-  <!-- Div for pushing items to both sides -->
-  <div class="flex-1"></div>
-  <!-- Right part -->
-  <div class="flex flex-row items-center z-20 h-full">
-    <!-- Page links -->
-    <div class="hidden sm:flex flex-row h-full">
-      
-        
-        
-          
-          
-        
-      <a href="publications.html" class="
-                        flex flex-row items-center
-                        gap-1
-                        hover:underline
-                        hover:bg-[var(--c-20)]
-                        hover:text-[var(--c-theme)]
-                        transition-all
-                        px-2
-                        py-1
-                        my-1
-                        rounded-lg
-                        group
-                        whitespace-nowrap
-                    ">
-        
-        <iconify-icon class="group-hover:scale-125 transition-transform" icon="mingcute:science-fill" width="22">
-        </iconify-icon>
-        
-        
+        Guohuan Feng
       </a>
-      
-        
-        
-          
-          
-        
-      <a href="about.html" class="
-                        flex flex-row items-center
-                        gap-1
-                        hover:underline
-                        hover:bg-[var(--c-20)]
-                        hover:text-[var(--c-theme)]
-                        transition-all
-                        px-2
-                        py-1
-                        my-1
-                        rounded-lg
-                        group
-                        whitespace-nowrap
-                    ">
-        
-        <iconify-icon class="group-hover:scale-125 transition-transform" icon="mingcute:user-info-fill" width="22">
-        </iconify-icon>
-        
-        
-      </a>
-      
-        
-        
-          
-          
-        
-      <a href="/./categories" class="
-                        flex flex-row items-center
-                        gap-1
-                        hover:underline
-                        hover:bg-[var(--c-20)]
-                        hover:text-[var(--c-theme)]
-                        transition-all
-                        px-2
-                        py-1
-                        my-1
-                        rounded-lg
-                        group
-                        whitespace-nowrap
-                    ">
-        
-        <iconify-icon class="group-hover:scale-125 transition-transform" icon="mingcute:classify-2-fill" width="22">
-        </iconify-icon>
-        
-        
-      </a>
-      
-        
-        
-          
-          
-        
-      <a href="/./tags" class="
-                        flex flex-row items-center
-                        gap-1
-                        hover:underline
-                        hover:bg-[var(--c-20)]
-                        hover:text-[var(--c-theme)]
-                        transition-all
-                        px-2
-                        py-1
-                        my-1
-                        rounded-lg
-                        group
-                        whitespace-nowrap
-                    ">
-        
-        <iconify-icon class="group-hover:scale-125 transition-transform" icon="mingcute:tag-fill" width="22">
-        </iconify-icon>
-        
-        
-      </a>
-      
-        
-        
-          
-          
-        
-      <a href="" class="
-                        flex flex-row items-center
-                        gap-1
-                        hover:underline
-                        hover:bg-[var(--c-20)]
-                        hover:text-[var(--c-theme)]
-                        transition-all
-                        px-2
-                        py-1
-                        my-1
-                        rounded-lg
-                        group
-                        whitespace-nowrap
-                    ">
-        
-        <iconify-icon class="group-hover:scale-125 transition-transform" icon="mingcute:home-2-fill" width="22">
-        </iconify-icon>
-        
-        
-      </a>
-      
     </div>
-    <!-- Icons on the right -->
-    <div class="flex flex-row items-center justify-center">
+    <!-- Div for pushing items to both sides -->
+    <div class="flex-1"></div>
+    <!-- Right part -->
+    <div class="flex flex-row items-center z-20 h-full">
+      <!-- Page links -->
+      <div class="hidden sm:flex flex-row h-full">
 
-      <!-- TODO: Add search icon here -->
 
-      <!-- Dark/light toggle icon -->
-      <a class="flex group p-1" title="toggle theme" id="toggle-dark">
-        <iconify-icon class="transition-transform
+
+
+
+
+        <a href="publications.html" class="
+                        flex flex-row items-center
+                        gap-1
+                        hover:underline
+                        hover:bg-[var(--c-20)]
+                        hover:text-[var(--c-theme)]
+                        transition-all
+                        px-2
+                        py-1
+                        my-1
+                        rounded-lg
+                        group
+                        whitespace-nowrap
+                    ">
+
+          <iconify-icon class="group-hover:scale-125 transition-transform" icon="mingcute:science-fill" width="22">
+          </iconify-icon>
+
+
+        </a>
+
+
+
+
+
+
+        <a href="about.html" class="
+                        flex flex-row items-center
+                        gap-1
+                        hover:underline
+                        hover:bg-[var(--c-20)]
+                        hover:text-[var(--c-theme)]
+                        transition-all
+                        px-2
+                        py-1
+                        my-1
+                        rounded-lg
+                        group
+                        whitespace-nowrap
+                    ">
+
+          <iconify-icon class="group-hover:scale-125 transition-transform" icon="mingcute:user-info-fill" width="22">
+          </iconify-icon>
+
+
+        </a>
+
+
+
+
+
+
+        <a href="/./categories" class="
+                        flex flex-row items-center
+                        gap-1
+                        hover:underline
+                        hover:bg-[var(--c-20)]
+                        hover:text-[var(--c-theme)]
+                        transition-all
+                        px-2
+                        py-1
+                        my-1
+                        rounded-lg
+                        group
+                        whitespace-nowrap
+                    ">
+
+          <iconify-icon class="group-hover:scale-125 transition-transform" icon="mingcute:classify-2-fill" width="22">
+          </iconify-icon>
+
+
+        </a>
+
+
+
+
+
+
+        <a href="/./tags" class="
+                        flex flex-row items-center
+                        gap-1
+                        hover:underline
+                        hover:bg-[var(--c-20)]
+                        hover:text-[var(--c-theme)]
+                        transition-all
+                        px-2
+                        py-1
+                        my-1
+                        rounded-lg
+                        group
+                        whitespace-nowrap
+                    ">
+
+          <iconify-icon class="group-hover:scale-125 transition-transform" icon="mingcute:tag-fill" width="22">
+          </iconify-icon>
+
+
+        </a>
+
+
+
+
+
+
+        <a href="" class="
+                        flex flex-row items-center
+                        gap-1
+                        hover:underline
+                        hover:bg-[var(--c-20)]
+                        hover:text-[var(--c-theme)]
+                        transition-all
+                        px-2
+                        py-1
+                        my-1
+                        rounded-lg
+                        group
+                        whitespace-nowrap
+                    ">
+
+          <iconify-icon class="group-hover:scale-125 transition-transform" icon="mingcute:home-2-fill" width="22">
+          </iconify-icon>
+
+
+        </a>
+
+      </div>
+      <!-- Icons on the right -->
+      <div class="flex flex-row items-center justify-center">
+
+        <!-- TODO: Add search icon here -->
+
+        <!-- Dark/light toggle icon -->
+        <a class="flex group p-1" title="toggle theme" id="toggle-dark">
+          <iconify-icon class="transition-transform
                     group-hover:rotate-[45deg]
                     group-hover:scale-125
                     group-hover:text-[var(--c-theme)]" width="24" id="theme-icon">
-        </iconify-icon>
-      </a>
-      <!-- Icon for dropout menu on small screens -->
-      <div class="flex flex-row items-center justify-center p-1 sm:hidden">
-        <a class="w-6 h-6" aria-hidden="true" id="open-menu">
-          <iconify-icon width="24" icon="mingcute:menu-fill" class="transition-transform hover:scale-125 hover:rotate-[5deg]">
           </iconify-icon>
         </a>
-        <a class="w-6 h-6 hidden" aria-hidden="true" id="close-menu">
-          <iconify-icon width="24" icon="mingcute:close-circle-fill" class="transition-transform hover:scale-125 hover:rotate-[80deg]">
-          </iconify-icon>
-        </a>
+        <!-- Icon for dropout menu on small screens -->
+        <div class="flex flex-row items-center justify-center p-1 sm:hidden">
+          <a class="w-6 h-6" aria-hidden="true" id="open-menu">
+            <iconify-icon width="24" icon="mingcute:menu-fill"
+              class="transition-transform hover:scale-125 hover:rotate-[5deg]">
+            </iconify-icon>
+          </a>
+          <a class="w-6 h-6 hidden" aria-hidden="true" id="close-menu">
+            <iconify-icon width="24" icon="mingcute:close-circle-fill"
+              class="transition-transform hover:scale-125 hover:rotate-[80deg]">
+            </iconify-icon>
+          </a>
+        </div>
       </div>
     </div>
-  </div>
-</header>
+  </header>
 
-<!-- Dropdown menu on small screens -->
-<div id="menu-panel" class="
+  <!-- Dropdown menu on small screens -->
+  <div id="menu-panel" class="
         h-0
         overflow-hidden
         sm:hidden
@@ -330,7 +336,7 @@
         z-10
         rounded
     ">
-  <div id="menu-content" class="
+    <div id="menu-content" class="
         flex
         flex-col
         font-bold
@@ -345,10 +351,10 @@
         transition-transform
         duration-200
         ">
-    
-    
-    
-    <a href="publications.html" class="
+
+
+
+      <a href="publications.html" class="
                 flex flex-row items-center
                 gap-2
                 h-12
@@ -358,17 +364,17 @@
                 py-1
                 rounded-lg
             ">
-      <iconify-icon icon="mingcute:science-fill" width="22">
-      </iconify-icon>
-      <p>
-        
-      </p>
-    </a>
-    
-    
-    
-    
-    <a href="about.html" class="
+        <iconify-icon icon="mingcute:science-fill" width="22">
+        </iconify-icon>
+        <p>
+
+        </p>
+      </a>
+
+
+
+
+      <a href="about.html" class="
                 flex flex-row items-center
                 gap-2
                 h-12
@@ -378,17 +384,17 @@
                 py-1
                 rounded-lg
             ">
-      <iconify-icon icon="mingcute:user-info-fill" width="22">
-      </iconify-icon>
-      <p>
-        
-      </p>
-    </a>
-    
-    
-    
-    
-    <a href="/./categories" class="
+        <iconify-icon icon="mingcute:user-info-fill" width="22">
+        </iconify-icon>
+        <p>
+
+        </p>
+      </a>
+
+
+
+
+      <a href="/./categories" class="
                 flex flex-row items-center
                 gap-2
                 h-12
@@ -398,17 +404,17 @@
                 py-1
                 rounded-lg
             ">
-      <iconify-icon icon="mingcute:classify-2-fill" width="22">
-      </iconify-icon>
-      <p>
-        
-      </p>
-    </a>
-    
-    
-    
-    
-    <a href="/./tags" class="
+        <iconify-icon icon="mingcute:classify-2-fill" width="22">
+        </iconify-icon>
+        <p>
+
+        </p>
+      </a>
+
+
+
+
+      <a href="/./tags" class="
                 flex flex-row items-center
                 gap-2
                 h-12
@@ -418,17 +424,17 @@
                 py-1
                 rounded-lg
             ">
-      <iconify-icon icon="mingcute:tag-fill" width="22">
-      </iconify-icon>
-      <p>
-        
-      </p>
-    </a>
-    
-    
-    
-    
-    <a href="" class="
+        <iconify-icon icon="mingcute:tag-fill" width="22">
+        </iconify-icon>
+        <p>
+
+        </p>
+      </a>
+
+
+
+
+      <a href="" class="
                 flex flex-row items-center
                 gap-2
                 h-12
@@ -438,29 +444,30 @@
                 py-1
                 rounded-lg
             ">
-      <iconify-icon icon="mingcute:home-2-fill" width="22">
-      </iconify-icon>
-      <p>
-        
-      </p>
-    </a>
-    
-    
+        <iconify-icon icon="mingcute:home-2-fill" width="22">
+        </iconify-icon>
+        <p>
+
+        </p>
+      </a>
+
+
+    </div>
   </div>
-</div>
 
   <main>
     <div class="flex flex-col gap-0">
-  <div class="index-info-container pt-6 text-[var(--c-70)]">
-    <!-- Home page info, short text about me -->
-    <div class="flex flex-col items-center">
-      
-      <a href="about.html">
-        <img class="rounded-3xl w-48 hover:scale-[1.04] transition-transform" src="static/picture/xiaoba.png" alt="Guohuan Feng">
-        </a>
-      
-      <!-- Site title -->
-      <h1 class="
+      <div class="index-info-container pt-6 text-[var(--c-70)]">
+        <!-- Home page info, short text about me -->
+        <div class="flex flex-col items-center">
+
+          <a href="about.html">
+            <img class="rounded-3xl w-48 hover:scale-[1.04] transition-transform" src="static/picture/xiaoba.png"
+              alt="Guohuan Feng">
+          </a>
+
+          <!-- Site title -->
+          <h1 class="
         site-title
         text-center
         text-5xl
@@ -469,141 +476,136 @@
         pt-6
         font-black
         ">
-        Guohuan Feng
-      </h1>
-      <!-- Sub-title -->
-      <p class="
+            Guohuan Feng
+          </h1>
+          <!-- Sub-title -->
+          <p class="
         text-3xl font-extrabold text-center
         bg-gradient-to-r from-cyan-500 to-blue-500 bg-clip-text text-transparent
         text-[var(--c-80)]">
-        
-      </p>
-      <div class="flex flex-wrap items-center justify-center gap-4 my-6 font-bold text-lg">
-        <div class="flex flex-row items-center gap-1">
-          <iconify-icon width="24" icon="mingcute:building-1-fill"></iconify-icon>
-          <p>Auburn Hills, US</p>
-        </div>
-        <div class="flex flex-row items-center gap-1 group">
-          <iconify-icon class="transition-transform
-                group-hover:scale-125" width="24" icon="mingcute:idcard-fill"></iconify-icon>
-          <a href="static/file/cv.pdf" class="group-hover:underline">
-            CV (November, 2024)
-          </a>
-        </div>
-      </div>
-      <!-- Description from config -->
-      <div class="description-container max-w-prose mx-auto grid grid-cols-1">
-        <div class="text-left p-8">
-          <p>
-            I am a computer science student at Oakland University, focusing on advanced topics such as edge computing, data center architecture, and intelligent system optimization, where I actively contribute to innovative research and development.
-          </p>
-        </div>
-      </div>
-      <!-- get content from index.md -->
-      <div class="post-content mt-4">
-      </div>
-    </div>
-  </div>
 
-  
-  <!-- 分割线 -->
-  <div class="flex flex-col items-center justify-center0">
-    <hr class="w-1/2 mb-10 h-[1px] bg-[var(--c-sep)] mr-1/2">
-    <section id=section-resume-experience class="relative hbb-section blox-resume-experience"
-            style="padding:6rem 0">
-            <div class=home-section-bg></div>
-            <div class="flex flex-col items-center max-w-prose mx-auto">
-                <div class="flex flex-col lg:gap-x-6 w-100 px-6 sm:px-0">
-                    <div class=w-full>
-                        <h3 class="mb-6 text-3xl font-bold text-gray-900 dark:text-white">Experience</h3>
-                        <ol class="relative border-s border-gray-200 dark:border-gray-700">
-                            <li class="mb-10 ms-6"><span
-                              style="background-color: rgb(10, 62, 211);"
-                                    class="absolute flex items-center justify-center w-6 h-6 bg-primary-100 rounded-full -start-3 ring-8 ring-white dark:ring-gray-900 dark:bg-primary-900"><svg
-                                        fill="currentcolor" viewbox="0 0 256 256"
-                                        class="w-5 h-5 text-primary-800 dark:text-primary-300">
-                                        <path
-                                            d="M216 56H176V48a24 24 0 00-24-24H104A24 24 0 0080 48v8H40A16 16 0 0024 72V2e2a16 16 0 0016 16H216a16 16 0 0016-16V72A16 16 0 00216 56zM96 48a8 8 0 018-8h48a8 8 0 018 8v8H96zM216 72v41.61A184 184 0 01128 136a184.07 184.07.0 01-88-22.38V72zm0 128H40V131.64A200.19 200.19.0 00128 152a200.25 200.25.0 0088-20.37V2e2zM104 112a8 8 0 018-8h32a8 8 0 010 16H112a8 8 0 01-8-8z">
-                                        </path>
-                                    </svg></span>
-                                <h3
-                                    class="flex items-center mb-1 text-lg font-semibold text-gray-900 dark:text-white text-wrap">
-                                    Software Developer Intern112345</h3><span
-                                    class="block mb-2 text-sm font-normal leading-none text-gray-500 dark:text-gray-300">StartNation
-                                    Inc.</span>
-                                <time
-                                    class="block mb-3 text-sm font-normal leading-none text-gray-500 dark:text-gray-300">March
-                                    2024 –
-                                    June 2024</time>
-                                <div
-                                    class="mb-4 text-base font-normal text-gray-500 dark:text-gray-300 text-wrap prose prose-slate dark:prose-invert">
-                                    <p>Responsibilities include:</p>
-                                    <ul>
-                                        <li>Utilized frontend technologies such as HTML5, CSS, and ECMAScript to ensure
-                                            elegant page rendering and cross-device compatibility.</li>
-                                        <li>Built dynamic user interfaces using React to enhance user experience.</li>
-                                        <li>Collaborated with backend team to implement data exchange, ensuring smooth
-                                            platform functionality.</li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li class="mb-10 ms-6"><span
-                              style="background-color: rgb(10, 62, 211);"
-                                    class="absolute flex items-center justify-center w-6 h-6 bg-primary-100 rounded-full -start-3 ring-8 ring-white dark:ring-gray-900 dark:bg-primary-900"><svg
-                                        fill="currentcolor" viewbox="0 0 256 256"
-                                        class="w-5 h-5 text-primary-800 dark:text-primary-300">
-                                        <path
-                                            d="M216 56H176V48a24 24 0 00-24-24H104A24 24 0 0080 48v8H40A16 16 0 0024 72V2e2a16 16 0 0016 16H216a16 16 0 0016-16V72A16 16 0 00216 56zM96 48a8 8 0 018-8h48a8 8 0 018 8v8H96zM216 72v41.61A184 184 0 01128 136a184.07 184.07.0 01-88-22.38V72zm0 128H40V131.64A200.19 200.19.0 00128 152a200.25 200.25.0 0088-20.37V2e2zM104 112a8 8 0 018-8h32a8 8 0 010 16H112a8 8 0 01-8-8z">
-                                        </path>
-                                    </svg></span>
-                                <h3
-                                    class="flex items-center mb-1 text-lg font-semibold text-gray-900 dark:text-white text-wrap">
-                                    Grader for CSI-3640</h3><span
-                                    class="block mb-2 text-sm font-normal leading-none text-gray-500 dark:text-gray-300">Oakland
-                                    University (OU)</span>
-                                <time
-                                    class="block mb-3 text-sm font-normal leading-none text-gray-500 dark:text-gray-300">January
-                                    2024 –
-                                    May 2024</time>
-                                <div
-                                    class="mb-4 text-base font-normal text-gray-500 dark:text-gray-300 text-wrap prose prose-slate dark:prose-invert">
-                                    <p>Responsibilities include:</p>
-                                    <ul>
-                                        <li>Delivered practical lab sessions on TCP/IP protocols, facilitating hands-on
-                                            learning and critical thinking.</li>
-                                        <li>Supported students in achieving A or B grades (>85%), significantly
-                                            improving overall course performance.</li>
-                                    </ul>
-                                </div>
-                            </li>
-                        </ol>
+          </p>
+          <div class="flex flex-wrap items-center justify-center gap-4 my-6 font-bold text-lg">
+            <div class="flex flex-row items-center gap-1">
+              <iconify-icon width="24" icon="mingcute:building-1-fill"></iconify-icon>
+              <p>Auburn Hills, US</p>
+            </div>
+            <div class="flex flex-row items-center gap-1 group">
+              <iconify-icon class="transition-transform
+                group-hover:scale-125" width="24" icon="mingcute:idcard-fill"></iconify-icon>
+              <a href="static/file/cv.pdf" class="group-hover:underline">
+                CV (November, 2024)
+              </a>
+            </div>
+          </div>
+          <!-- Description from config -->
+          <div class="description-container max-w-prose mx-auto grid grid-cols-1">
+            <div class="text-left p-8">
+              <p>
+                I am a computer science student at Oakland University, focusing on advanced topics such as edge
+                computing, data center architecture, and intelligent system optimization, where I actively contribute to
+                innovative research and development.
+              </p>
+            </div>
+          </div>
+          <!-- get content from index.md -->
+          <div class="post-content mt-4">
+          </div>
+        </div>
+      </div>
+
+
+      <!-- 分割线 -->
+      <div class="flex flex-col items-center justify-center0">
+        <hr class="w-1/2 mb-10 h-[1px] bg-[var(--c-sep)] mr-1/2">
+        <section id=section-resume-experience class="relative hbb-section blox-resume-experience"
+          style="padding:6rem 0">
+          <div class=home-section-bg></div>
+          <div class="flex flex-col items-center max-w-prose mx-auto">
+            <div class="flex flex-col lg:gap-x-6 w-100 px-6 sm:px-0">
+              <div class=w-full>
+                <h3 class="mb-6 text-3xl font-bold text-gray-900 dark:text-white">Experience</h3>
+                <ol class="relative border-s border-gray-200 dark:border-gray-700">
+                  <li class="mb-10 ms-6"><span style="background-color: rgb(10, 62, 211);"
+                      class="absolute flex items-center justify-center w-6 h-6 bg-primary-100 rounded-full -start-3 ring-8 ring-white dark:ring-gray-900 dark:bg-primary-900"><svg
+                        fill="currentcolor" viewbox="0 0 256 256"
+                        class="w-5 h-5 text-primary-800 dark:text-primary-300">
+                        <path
+                          d="M216 56H176V48a24 24 0 00-24-24H104A24 24 0 0080 48v8H40A16 16 0 0024 72V2e2a16 16 0 0016 16H216a16 16 0 0016-16V72A16 16 0 00216 56zM96 48a8 8 0 018-8h48a8 8 0 018 8v8H96zM216 72v41.61A184 184 0 01128 136a184.07 184.07.0 01-88-22.38V72zm0 128H40V131.64A200.19 200.19.0 00128 152a200.25 200.25.0 0088-20.37V2e2zM104 112a8 8 0 018-8h32a8 8 0 010 16H112a8 8 0 01-8-8z">
+                        </path>
+                      </svg></span>
+                    <h3 class="flex items-center mb-1 text-lg font-semibold text-gray-900 dark:text-white text-wrap">
+                      Software Developer Intern112345</h3><span
+                      class="block mb-2 text-sm font-normal leading-none text-gray-500 dark:text-gray-300">StartNation
+                      Inc.</span>
+                    <time class="block mb-3 text-sm font-normal leading-none text-gray-500 dark:text-gray-300">March
+                      2024 –
+                      June 2024</time>
+                    <div
+                      class="mb-4 text-base font-normal text-gray-500 dark:text-gray-300 text-wrap prose prose-slate dark:prose-invert">
+                      <p>Responsibilities include:</p>
+                      <ul>
+                        <li>Utilized frontend technologies such as HTML5, CSS, and ECMAScript to ensure
+                          elegant page rendering and cross-device compatibility.</li>
+                        <li>Built dynamic user interfaces using React to enhance user experience.</li>
+                        <li>Collaborated with backend team to implement data exchange, ensuring smooth
+                          platform functionality.</li>
+                      </ul>
                     </div>
-                    <div class=w-full>
-                        <h3 class="mb-6 text-3xl font-bold text-gray-900 dark:text-white">Education</h3>
-                        <ol class="relative border-s border-gray-200 dark:border-gray-700">
-                            <li class="mb-10 ms-6"><span
-                              style="background-color: rgb(10, 62, 211);"
-                                    class="absolute flex items-center justify-center w-6 h-6 bg-primary-100 rounded-full -start-3 ring-8 ring-white dark:ring-gray-900 dark:bg-primary-900"><svg
-                                        fill="currentcolor" viewbox="0 0 256 256"
-                                        class="w-5 h-5 text-primary-800 dark:text-primary-300">
-                                        <path
-                                            d="M251.76 88.94l-120-64a8 8 0 00-7.52.0l-120 64a8 8 0 000 14.12L32 117.87v48.42a15.91 15.91.0 004.06 10.65C49.16 191.53 78.51 216 128 216a130 130 0 0048-8.76V240a8 8 0 0016 0V199.51a115.63 115.63.0 0027.94-22.57A15.91 15.91.0 00224 166.29V117.87l27.76-14.81a8 8 0 000-14.12zM128 2e2c-43.27.0-68.72-21.14-80-33.71V126.4l76.24 40.66a8 8 0 007.52.0L176 143.47v46.34C163.4 195.69 147.52 2e2 128 2e2zm80-33.75a97.83 97.83.0 01-16 14.25V134.93l16-8.53zm-20-47.31-.22-.13-56-29.87a8 8 0 00-7.52 14.12L171 128l-43 22.93L25 96 128 41.07 231 96z">
-                                        </path>
-                                    </svg></span>
-                                <h3 class="flex items-center mb-1 text-lg font-semibold text-gray-900 dark:text-white">
-                                    PhD Artificial Intelligence</h3><span
-                                    class="block mb-2 text-sm font-normal leading-none text-gray-500 dark:text-gray-300">Stanford
-                                    University</span>
+                  </li>
+                  <li class="mb-10 ms-6"><span style="background-color: rgb(10, 62, 211);"
+                      class="absolute flex items-center justify-center w-6 h-6 bg-primary-100 rounded-full -start-3 ring-8 ring-white dark:ring-gray-900 dark:bg-primary-900"><svg
+                        fill="currentcolor" viewbox="0 0 256 256"
+                        class="w-5 h-5 text-primary-800 dark:text-primary-300">
+                        <path
+                          d="M216 56H176V48a24 24 0 00-24-24H104A24 24 0 0080 48v8H40A16 16 0 0024 72V2e2a16 16 0 0016 16H216a16 16 0 0016-16V72A16 16 0 00216 56zM96 48a8 8 0 018-8h48a8 8 0 018 8v8H96zM216 72v41.61A184 184 0 01128 136a184.07 184.07.0 01-88-22.38V72zm0 128H40V131.64A200.19 200.19.0 00128 152a200.25 200.25.0 0088-20.37V2e2zM104 112a8 8 0 018-8h32a8 8 0 010 16H112a8 8 0 01-8-8z">
+                        </path>
+                      </svg></span>
+                    <h3 class="flex items-center mb-1 text-lg font-semibold text-gray-900 dark:text-white text-wrap">
+                      Grader for CSI-3640</h3><span
+                      class="block mb-2 text-sm font-normal leading-none text-gray-500 dark:text-gray-300">Oakland
+                      University (OU)</span>
+                    <time class="block mb-3 text-sm font-normal leading-none text-gray-500 dark:text-gray-300">January
+                      2024 –
+                      May 2024</time>
+                    <div
+                      class="mb-4 text-base font-normal text-gray-500 dark:text-gray-300 text-wrap prose prose-slate dark:prose-invert">
+                      <p>Responsibilities include:</p>
+                      <ul>
+                        <li>Delivered practical lab sessions on TCP/IP protocols, facilitating hands-on
+                          learning and critical thinking.</li>
+                        <li>Supported students in achieving A or B grades (>85%), significantly
+                          improving overall course performance.</li>
+                      </ul>
+                    </div>
+                  </li>
+                </ol>
+              </div>
+              <div class=w-full>
+                <h3 class="mb-6 text-3xl font-bold text-gray-900 dark:text-white">Education</h3>
+                <ol class="relative border-s border-gray-200 dark:border-gray-700">
+                  <li class="mb-10 ms-6"><span style="background-color: rgb(10, 62, 211);"
+                      class="absolute flex items-center justify-center w-6 h-6 bg-primary-100 rounded-full -start-3 ring-8 ring-white dark:ring-gray-900 dark:bg-primary-900"><svg
+                        fill="currentcolor" viewbox="0 0 256 256"
+                        class="w-5 h-5 text-primary-800 dark:text-primary-300">
+                        <path
+                          d="M251.76 88.94l-120-64a8 8 0 00-7.52.0l-120 64a8 8 0 000 14.12L32 117.87v48.42a15.91 15.91.0 004.06 10.65C49.16 191.53 78.51 216 128 216a130 130 0 0048-8.76V240a8 8 0 0016 0V199.51a115.63 115.63.0 0027.94-22.57A15.91 15.91.0 00224 166.29V117.87l27.76-14.81a8 8 0 000-14.12zM128 2e2c-43.27.0-68.72-21.14-80-33.71V126.4l76.24 40.66a8 8 0 007.52.0L176 143.47v46.34C163.4 195.69 147.52 2e2 128 2e2zm80-33.75a97.83 97.83.0 01-16 14.25V134.93l16-8.53zm-20-47.31-.22-.13-56-29.87a8 8 0 00-7.52 14.12L171 128l-43 22.93L25 96 128 41.07 231 96z">
+                        </path>
+                      </svg></span>
+                    <h3 class="flex items-center mb-1 text-lg font-semibold text-gray-900 dark:text-white">
+                      <!--     PhD Artificial Intelligence</h3><span 
+                                    class="block mb-2 text-sm font-normal leading-none text-gray-500 dark:text-gray-300"> -Stanford 
+                                     University</span>  
                                 <time
-                                    class="block mb-3 text-sm font-normal leading-none text-gray-500 dark:text-gray-300">January
-                                    2016 –
-                                    December 2020</time>
-                                <div
+                                   class="block mb-3 text-sm font-normal leading-none text-gray-500 dark:text-gray-300">January
+                                    2016 – 
+                                    December 2020</time>  -->
+                      <!--    <div
                                     class="mb-4 text-base font-normal text-gray-500 dark:text-gray-300 prose prose-slate dark:prose-invert">
                                     Thesis on <em>Why LLMs are awesome</em>. Supervised by <a href=https://example.com
                                         target=_blank rel=noopener>Prof Joe Smith</a>. Presented papers at 5 IEEE
-                                    conferences with the contributions being published in 2 Springer journals.</div><a
-                                    href=https://example.com target=_blank rel=noopener
+                                    conferences with the contributions being published in 2 Springer journals.</div><a 
+                                    href=https://example.com target=_blank rel=noopener 
                                     class="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:ring-4 focus:outline-none focus:ring-gray-200 focus:text-primary-700 dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-gray-700"><svg
                                         class="w-3.5 h-3.5 me-2.5" aria-hidden="true" fill="currentcolor"
                                         viewbox="0 0 20 20">
@@ -613,114 +615,108 @@
                                         <path
                                             d="M18 12h-2.55l-2.975 2.975a3.5 3.5.0 01-4.95.0L4.55 12H2a2 2 0 00-2 2v4a2 2 0 002 2h16a2 2 0 002-2v-4a2 2 0 00-2-2zm-3 5a1 1 0 110-2 1 1 0 010 2z">
                                         </path>
-                                    </svg> Read Thesis</a>
-                            </li>
-                            <li class="mb-10 ms-6"><span
-                              style="background-color: rgb(10, 62, 211);"
-                                    class="absolute flex items-center justify-center w-6 h-6 bg-primary-100 rounded-full -start-3 ring-8 ring-white dark:ring-gray-900 dark:bg-primary-900"><svg
-                                        fill="currentcolor" viewbox="0 0 256 256"
-                                        class="w-5 h-5 text-primary-800 dark:text-primary-300">
-                                        <path
-                                            d="M251.76 88.94l-120-64a8 8 0 00-7.52.0l-120 64a8 8 0 000 14.12L32 117.87v48.42a15.91 15.91.0 004.06 10.65C49.16 191.53 78.51 216 128 216a130 130 0 0048-8.76V240a8 8 0 0016 0V199.51a115.63 115.63.0 0027.94-22.57A15.91 15.91.0 00224 166.29V117.87l27.76-14.81a8 8 0 000-14.12zM128 2e2c-43.27.0-68.72-21.14-80-33.71V126.4l76.24 40.66a8 8 0 007.52.0L176 143.47v46.34C163.4 195.69 147.52 2e2 128 2e2zm80-33.75a97.83 97.83.0 01-16 14.25V134.93l16-8.53zm-20-47.31-.22-.13-56-29.87a8 8 0 00-7.52 14.12L171 128l-43 22.93L25 96 128 41.07 231 96z">
-                                        </path>
-                                    </svg></span>
-                                <h3 class="flex items-center mb-1 text-lg font-semibold text-gray-900 dark:text-white">
-                                    BSc Computer Science</h3><span
-                                    class="block mb-2 text-sm font-normal leading-none text-gray-500 dark:text-gray-300">Oakland
-                                    University, Rochester, MI</span>
-                                <time
-                                    class="block mb-3 text-sm font-normal leading-none text-gray-500 dark:text-gray-300">September
-                                    2023 –
-                                    May 2025</time>
-                                <div
-                                    class="mb-4 text-base font-normal text-gray-500 dark:text-gray-300 prose prose-slate dark:prose-invert">
-                                    <p>GPA: 3.96/4.0</p>
-                                    <p>Relevant Courses:</p>
-                                    <ul>
-                                        <li>Advanced Web Design & Application</li>
-                                        <li>Data Structures and Algorithms</li>
-                                        <li>Database Management Systems</li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li class="mb-10 ms-6"><span
-                              style="background-color: rgb(10, 62, 211);"
-                                    class="absolute flex items-center justify-center w-6 h-6 bg-primary-100 rounded-full -start-3 ring-8 ring-white dark:ring-gray-900 dark:bg-primary-900"><svg
-                                        fill="currentcolor" viewbox="0 0 256 256"
-                                        class="w-5 h-5 text-primary-800 dark:text-primary-300">
-                                        <path
-                                            d="M251.76 88.94l-120-64a8 8 0 00-7.52.0l-120 64a8 8 0 000 14.12L32 117.87v48.42a15.91 15.91.0 004.06 10.65C49.16 191.53 78.51 216 128 216a130 130 0 0048-8.76V240a8 8 0 0016 0V199.51a115.63 115.63.0 0027.94-22.57A15.91 15.91.0 00224 166.29V117.87l27.76-14.81a8 8 0 000-14.12zM128 2e2c-43.27.0-68.72-21.14-80-33.71V126.4l76.24 40.66a8 8 0 007.52.0L176 143.47v46.34C163.4 195.69 147.52 2e2 128 2e2zm80-33.75a97.83 97.83.0 01-16 14.25V134.93l16-8.53zm-20-47.31-.22-.13-56-29.87a8 8 0 00-7.52 14.12L171 128l-43 22.93L25 96 128 41.07 231 96z">
-                                        </path>
-                                    </svg></span>
-                                <h3 class="flex items-center mb-1 text-lg font-semibold text-gray-900 dark:text-white">
-                                    BEng Software Engineering</h3><span
-                                    class="block mb-2 text-sm font-normal leading-none text-gray-500 dark:text-gray-300">Zhengzhou
-                                    University of Light Industry, Zhengzhou, China</span>
-                                <time
-                                    class="block mb-3 text-sm font-normal leading-none text-gray-500 dark:text-gray-300">August
-                                    2020 –
-                                    May 2024</time>
-                                <div
-                                    class="mb-4 text-base font-normal text-gray-500 dark:text-gray-300 prose prose-slate dark:prose-invert">
-                                    <p>GPA: 3.77/5.0; Ranking: 6/485</p>
-                                    <p>Relevant Courses:</p>
-                                    <ul>
-                                        <li>Object-Oriented Programming</li>
-                                        <li>Software Engineering Principles</li>
-                                        <li>Artificial Intelligence Fundamentals</li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li class="mb-10 ms-6"><span
-                              style="background-color: rgb(10, 62, 211);"
-                                    class="absolute flex items-center justify-center w-6 h-6 bg-primary-100 rounded-full -start-3 ring-8 ring-white dark:ring-gray-900 dark:bg-primary-900"><svg
-                                        fill="currentcolor" viewbox="0 0 256 256"
-                                        class="w-5 h-5 text-primary-800 dark:text-primary-300">
-                                        <path
-                                            d="M251.76 88.94l-120-64a8 8 0 00-7.52.0l-120 64a8 8 0 000 14.12L32 117.87v48.42a15.91 15.91.0 004.06 10.65C49.16 191.53 78.51 216 128 216a130 130 0 0048-8.76V240a8 8 0 0016 0V199.51a115.63 115.63.0 0027.94-22.57A15.91 15.91.0 00224 166.29V117.87l27.76-14.81a8 8 0 000-14.12zM128 2e2c-43.27.0-68.72-21.14-80-33.71V126.4l76.24 40.66a8 8 0 007.52.0L176 143.47v46.34C163.4 195.69 147.52 2e2 128 2e2zm80-33.75a97.83 97.83.0 01-16 14.25V134.93l16-8.53zm-20-47.31-.22-.13-56-29.87a8 8 0 00-7.52 14.12L171 128l-43 22.93L25 96 128 41.07 231 96z">
-                                        </path>
-                                    </svg></span>
-                                <h3 class="flex items-center mb-1 text-lg font-semibold text-gray-900 dark:text-white">
-                                    Bng Software Engineering</h3><span
-                                    class="block mb-2 text-sm font-normal leading-none text-gray-500 dark:text-gray-300">Zhengzhou
-                                    University of Light Industry, Zhengzhou, China</span>
-                                <time
-                                    class="block mb-3 text-sm font-normal leading-none text-gray-500 dark:text-gray-300">August
-                                    2020 –
-                                    May 2024</time>
-                                <div
-                                    class="mb-4 text-base font-normal text-gray-500 dark:text-gray-300 prose prose-slate dark:prose-invert">
-                                    <p>GPA: 3.77/5.0; Ranking: 6/485</p>
-                                    <p>Relevant Courses:</p>
-                                    <ul>
-                                        <li>Object-Oriented Programming</li>
-                                        <li>Software Engineering Principles</li>
-                                        <li>Artificial Intelligence Fundamentals</li>
-                                    </ul>
-                                </div>
-                            </li>
-                        </ol>
+                                    </svg> Read Thesis</a> -->
+                  </li>
+                  <li class="mb-10 ms-6"><span style="background-color: rgb(10, 62, 211);"
+                      class="absolute flex items-center justify-center w-6 h-6 bg-primary-100 rounded-full -start-3 ring-8 ring-white dark:ring-gray-900 dark:bg-primary-900"><svg
+                        fill="currentcolor" viewbox="0 0 256 256"
+                        class="w-5 h-5 text-primary-800 dark:text-primary-300">
+                        <path
+                          d="M251.76 88.94l-120-64a8 8 0 00-7.52.0l-120 64a8 8 0 000 14.12L32 117.87v48.42a15.91 15.91.0 004.06 10.65C49.16 191.53 78.51 216 128 216a130 130 0 0048-8.76V240a8 8 0 0016 0V199.51a115.63 115.63.0 0027.94-22.57A15.91 15.91.0 00224 166.29V117.87l27.76-14.81a8 8 0 000-14.12zM128 2e2c-43.27.0-68.72-21.14-80-33.71V126.4l76.24 40.66a8 8 0 007.52.0L176 143.47v46.34C163.4 195.69 147.52 2e2 128 2e2zm80-33.75a97.83 97.83.0 01-16 14.25V134.93l16-8.53zm-20-47.31-.22-.13-56-29.87a8 8 0 00-7.52 14.12L171 128l-43 22.93L25 96 128 41.07 231 96z">
+                        </path>
+                      </svg></span>
+                    <h3 class="flex items-center mb-1 text-lg font-semibold text-gray-900 dark:text-white">
+                      BSc Computer Science</h3><span
+                      class="block mb-2 text-sm font-normal leading-none text-gray-500 dark:text-gray-300">Oakland
+                      University, Rochester, MI</span>
+                    <time class="block mb-3 text-sm font-normal leading-none text-gray-500 dark:text-gray-300">September
+                      2023 –
+                      May 2025</time>
+                    <div
+                      class="mb-4 text-base font-normal text-gray-500 dark:text-gray-300 prose prose-slate dark:prose-invert">
+                      <p>GPA: 3.96/4.0</p>
+                      <p>Relevant Courses:</p>
+                      <ul>
+                        <li>Advanced Web Design & Application</li>
+                        <li>Data Structures and Algorithms</li>
+                        <li>Database Management Systems</li>
+                      </ul>
                     </div>
-                </div>
+                  </li>
+                  <li class="mb-10 ms-6"><span style="background-color: rgb(10, 62, 211);"
+                      class="absolute flex items-center justify-center w-6 h-6 bg-primary-100 rounded-full -start-3 ring-8 ring-white dark:ring-gray-900 dark:bg-primary-900"><svg
+                        fill="currentcolor" viewbox="0 0 256 256"
+                        class="w-5 h-5 text-primary-800 dark:text-primary-300">
+                        <path
+                          d="M251.76 88.94l-120-64a8 8 0 00-7.52.0l-120 64a8 8 0 000 14.12L32 117.87v48.42a15.91 15.91.0 004.06 10.65C49.16 191.53 78.51 216 128 216a130 130 0 0048-8.76V240a8 8 0 0016 0V199.51a115.63 115.63.0 0027.94-22.57A15.91 15.91.0 00224 166.29V117.87l27.76-14.81a8 8 0 000-14.12zM128 2e2c-43.27.0-68.72-21.14-80-33.71V126.4l76.24 40.66a8 8 0 007.52.0L176 143.47v46.34C163.4 195.69 147.52 2e2 128 2e2zm80-33.75a97.83 97.83.0 01-16 14.25V134.93l16-8.53zm-20-47.31-.22-.13-56-29.87a8 8 0 00-7.52 14.12L171 128l-43 22.93L25 96 128 41.07 231 96z">
+                        </path>
+                      </svg></span>
+                    <h3 class="flex items-center mb-1 text-lg font-semibold text-gray-900 dark:text-white">
+                      BEng Software Engineering</h3><span
+                      class="block mb-2 text-sm font-normal leading-none text-gray-500 dark:text-gray-300">Zhengzhou
+                      University of Light Industry, Zhengzhou, China</span>
+                    <time class="block mb-3 text-sm font-normal leading-none text-gray-500 dark:text-gray-300">August
+                      2020 –
+                      May 2024</time>
+                    <div
+                      class="mb-4 text-base font-normal text-gray-500 dark:text-gray-300 prose prose-slate dark:prose-invert">
+                      <p>GPA: 3.77/5.0; Ranking: 6/485</p>
+                      <p>Relevant Courses:</p>
+                      <ul>
+                        <li>Object-Oriented Programming</li>
+                        <li>Software Engineering Principles</li>
+                        <li>Artificial Intelligence Fundamentals</li>
+                      </ul>
+                    </div>
+                  </li>
+                  <li class="mb-10 ms-6"><span style="background-color: rgb(10, 62, 211);"
+                      class="absolute flex items-center justify-center w-6 h-6 bg-primary-100 rounded-full -start-3 ring-8 ring-white dark:ring-gray-900 dark:bg-primary-900"><svg
+                        fill="currentcolor" viewbox="0 0 256 256"
+                        class="w-5 h-5 text-primary-800 dark:text-primary-300">
+                        <path
+                          d="M251.76 88.94l-120-64a8 8 0 00-7.52.0l-120 64a8 8 0 000 14.12L32 117.87v48.42a15.91 15.91.0 004.06 10.65C49.16 191.53 78.51 216 128 216a130 130 0 0048-8.76V240a8 8 0 0016 0V199.51a115.63 115.63.0 0027.94-22.57A15.91 15.91.0 00224 166.29V117.87l27.76-14.81a8 8 0 000-14.12zM128 2e2c-43.27.0-68.72-21.14-80-33.71V126.4l76.24 40.66a8 8 0 007.52.0L176 143.47v46.34C163.4 195.69 147.52 2e2 128 2e2zm80-33.75a97.83 97.83.0 01-16 14.25V134.93l16-8.53zm-20-47.31-.22-.13-56-29.87a8 8 0 00-7.52 14.12L171 128l-43 22.93L25 96 128 41.07 231 96z">
+                        </path>
+                      </svg></span>
+                    <h3 class="flex items-center mb-1 text-lg font-semibold text-gray-900 dark:text-white">
+                      Bng Software Engineering</h3><span
+                      class="block mb-2 text-sm font-normal leading-none text-gray-500 dark:text-gray-300">Zhengzhou
+                      University of Light Industry, Zhengzhou, China</span>
+                    <time class="block mb-3 text-sm font-normal leading-none text-gray-500 dark:text-gray-300">August
+                      2020 –
+                      May 2024</time>
+                    <div
+                      class="mb-4 text-base font-normal text-gray-500 dark:text-gray-300 prose prose-slate dark:prose-invert">
+                      <p>GPA: 3.77/5.0; Ranking: 6/485</p>
+                      <p>Relevant Courses:</p>
+                      <ul>
+                        <li>Object-Oriented Programming</li>
+                        <li>Software Engineering Principles</li>
+                        <li>Artificial Intelligence Fundamentals</li>
+                      </ul>
+                    </div>
+                  </li>
+                </ol>
+              </div>
             </div>
+          </div>
         </section>
-    <hr class="w-1/2 mb-10 h-[1px] bg-[var(--c-sep)] mr-1/2">
-    <div class="flex flex-row items-center gap-2 text-[var(--c-50)]">
-      <iconify-icon width="28" icon="mingcute:star-fill"></iconify-icon>
-      <p class="text-center text-3xl">Featured Posts</p>
-    </div>
-  </div>
+        <hr class="w-1/2 mb-10 h-[1px] bg-[var(--c-sep)] mr-1/2">
+        <div class="flex flex-row items-center gap-2 text-[var(--c-50)]">
+          <iconify-icon width="28" icon="mingcute:star-fill"></iconify-icon>
+          <p class="text-center text-3xl">Featured Posts</p>
+        </div>
+      </div>
 
-  <!-- List of featured posts -->
-  <!-- List of featured posts -->
-  <section class="px-2 py-8 max-w-prose mx-auto gap-4 grid grid-cols-1">
-  
-    <!-- Sort posts by date -->
-    
-    
-      
-      <!-- Large text showing the year in the background -->
-      
+      <!-- List of featured posts -->
+      <!-- List of featured posts -->
+      <section class="px-2 py-8 max-w-prose mx-auto gap-4 grid grid-cols-1">
+
+        <!-- Sort posts by date -->
+
+
+
+        <!-- Large text showing the year in the background -->
+
         <div class="relative pointer-events-none h-[30px] -z-50">
           <div class="absolute -top-6 w-[100%]">
             <p class="
@@ -737,60 +733,65 @@
             </p>
           </div>
         </div>
-      
-      <!-- The post -->
-      <div class="w-full">
-        <!-- One post item in a list -->
-  <div class="
+
+        <!-- The post -->
+        <div class="w-full">
+          <!-- One post item in a list -->
+          <div class="
       post-container
       px-2 py-2
       flex flex-col gap-3">
-      <div class="flex flex-row gap-4">
-          
+            <div class="flex flex-row gap-4">
+
               <div class="flex flex-col gap-1">
-                  <!-- Post title -->
-                  <a href="https://ieeexplore.ieee.org/document/10419242/">
-                      <h2 class="
+                <!-- Post title -->
+                <a href="https://ieeexplore.ieee.org/document/10419242/">
+                  <h2 class="
                           text-[var(--c-80)]
                           font-bold
                           text-xl
                           hover:text-[var(--c-theme)]
                           transition-all
                           hover:underline">
-                          (EREN) Robust and Scalable Model Editing for Large Language Models
-                      </h2>
-                  </a>
-              <!-- Post excerpt -->
-              
-                  <div class="post-excerpt post-content text-[var(--c-60)] text-sm line-clamp-5 border-b-1 border-[var(--c-sep)]">
-                      <p><a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/document/10419242/">GitHub</a> | <a href="https://ieeexplore.ieee.org/document/10419242/">Paper (upcoming)</a></p>
-  <p><strong>TL;DR</strong>: A reader is augmented with a growing notebook that caches all edits in natural texts, and the reader retrieves relevant edits and make inference based on them. This achieves SOTA in model editing in QA and fact-checking.</p>                </div>
-              
+                    (EREN) Robust and Scalable Model Editing for Large Language Models
+                  </h2>
+                </a>
+                <!-- Post excerpt -->
+
+                <div
+                  class="post-excerpt post-content text-[var(--c-60)] text-sm line-clamp-5 border-b-1 border-[var(--c-sep)]">
+                  <p><a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/document/10419242/">GitHub</a>
+                    | <a href="https://ieeexplore.ieee.org/document/10419242/">Paper (upcoming)</a></p>
+                  <p><strong>TL;DR</strong>: A reader is augmented with a growing notebook that caches all edits in
+                    natural texts, and the reader retrieves relevant edits and make inference based on them. This
+                    achieves SOTA in model editing in QA and fact-checking.</p>
+                </div>
+
               </div>
+            </div>
+
           </div>
-          
-  </div>
-      </div>
-    
-    
-    
-  </section>
+        </div>
 
 
-  
-</div>
+
+      </section>
+
+
+
+    </div>
   </main>
   <footer class="flex flex-col mt-18 mb-12 items-center
   text-[var(--c-50)] text-sm">
-  <div class="flex flex-row items-center my-12">
-    
-    
-        
-        
-            
-            
-        
-        <a class="
+    <div class="flex flex-row items-center my-12">
+
+
+
+
+
+
+
+      <a class="
             hover:text-[var(--c-theme)]
             hover:bg-[var(--c-20)]
             rounded-lg
@@ -798,15 +799,15 @@
             my-1
             flex flex-row items-center
             group" title="Github" target="_blank" rel="noopener" href="https://github.com/Guohuan-Feng">
-            <iconify-icon width="28" icon="mingcute:github-fill"></iconify-icon>
-        </a>
-    
-        
-        
-            
-            
-        
-        <a class="
+        <iconify-icon width="28" icon="mingcute:github-fill"></iconify-icon>
+      </a>
+
+
+
+
+
+
+      <a class="
             hover:text-[var(--c-theme)]
             hover:bg-[var(--c-20)]
             rounded-lg
@@ -814,67 +815,68 @@
             my-1
             flex flex-row items-center
             group" title="Linkedin" target="_blank" rel="noopener" href="https://www.linkedin.com/in/guohuanfeng">
-            <iconify-icon width="28" icon="mingcute:linkedin-fill"></iconify-icon>
-        </a>
-    
-        
-        
-            
-            
-        
-        <a class="
+        <iconify-icon width="28" icon="mingcute:linkedin-fill"></iconify-icon>
+      </a>
+
+
+
+
+
+
+      <a class="
             hover:text-[var(--c-theme)]
             hover:bg-[var(--c-20)]
             rounded-lg
             p-2
             my-1
             flex flex-row items-center
-            group" title="Google Scholar" target="_blank" rel="noopener" href="https://scholar.google.com/citations?user=wcs6foEAAAAJ&amp;hl=en">
-            <iconify-icon width="28" icon="mingcute:book-6-fill"></iconify-icon>
-        </a>
-    
-
-  </div>
-  <!-- busuanzi -->
-  <div class="mb-6">
-    
-<script async src="static/js/busuanzi.pure.mini.js"></script>
-<!-- Busuanzi Analytics -->
-<div class="flex flex-col items-center mb-2">
-  <div class="flex flex-row items-center">
-    <iconify-icon width="16" icon="ic:round-person" width="18"></iconify-icon>
-    <span class="mr-1">访客 Visitors: </span>
-    <span id="busuanzi_value_site_uv"></span>
-  </div>
-  <div class="flex flex-row items-center">
-    <iconify-icon width="16" icon="carbon:view-filled" width="18"></iconify-icon>
-    <span class="mx-1">浏览量 Page Views:</span>
-    <span id="busuanzi_value_site_pv"></span>
-  </div>
-</div>
-<!-- End Busuanzi Analytics -->
+            group" title="Google Scholar" target="_blank" rel="noopener"
+        href="https://scholar.google.com/citations?user=wcs6foEAAAAJ&amp;hl=en">
+        <iconify-icon width="28" icon="mingcute:book-6-fill"></iconify-icon>
+      </a>
 
 
-  </div>
-  <!-- copyright -->
-  <div class="flex flex-row items-center gap-2">
-    <a class="hover:underline" target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
-      CC BY-NC-SA 4.0
-    </a>
-    <span>© 2022-2024</span>
-    <a class="hover:underline" href="https://github.com/Guohuan-Feng" target="_blank" rel="noopener noreferrer"></a>
-  </div>
-  <!-- powered by -->
-  <div class="flex items-center gap-1">
-    <span>Powered by</span>
-    <a class="hover:underline" href="https://hexo.io/" target="_blank" rel="noopener noreferrer">Hexo</a>
-    <span>&</span>
-    <a href="https://github.com/Guohuan-Feng" class="hover:underline" target="_blank" rel="noopener noreferrer">
+    </div>
+    <!-- busuanzi -->
+    <div class="mb-6">
 
-    </a>
-  </div>
+      <script async src="static/js/busuanzi.pure.mini.js"></script>
+      <!-- Busuanzi Analytics -->
+      <div class="flex flex-col items-center mb-2">
+        <div class="flex flex-row items-center">
+          <iconify-icon width="16" icon="ic:round-person" width="18"></iconify-icon>
+          <span class="mr-1">访客 Visitors: </span>
+          <span id="busuanzi_value_site_uv"></span>
+        </div>
+        <div class="flex flex-row items-center">
+          <iconify-icon width="16" icon="carbon:view-filled" width="18"></iconify-icon>
+          <span class="mx-1">浏览量 Page Views:</span>
+          <span id="busuanzi_value_site_pv"></span>
+        </div>
+      </div>
+      <!-- End Busuanzi Analytics -->
 
-</footer>
+
+    </div>
+    <!-- copyright -->
+    <div class="flex flex-row items-center gap-2">
+      <a class="hover:underline" target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+        CC BY-NC-SA 4.0
+      </a>
+      <span>© 2022-2024</span>
+      <a class="hover:underline" href="https://github.com/Guohuan-Feng" target="_blank" rel="noopener noreferrer"></a>
+    </div>
+    <!-- powered by -->
+    <div class="flex items-center gap-1">
+      <span>Powered by</span>
+      <a class="hover:underline" href="https://hexo.io/" target="_blank" rel="noopener noreferrer">Hexo</a>
+      <span>&</span>
+      <a href="https://github.com/Guohuan-Feng" class="hover:underline" target="_blank" rel="noopener noreferrer">
+
+      </a>
+    </div>
+
+  </footer>
 
   <div class="
     back-to-top
@@ -895,8 +897,8 @@
       <iconify-icon width="18" icon="mingcute:arrow-to-up-fill" id="go-top"></iconify-icon>
     </span>
   </div>
-  
-<script src="static/js/main.js"></script>
+
+  <script src="static/js/main.js"></script>
 
 
   <div class="fixed top-0 bottom-0 left-0 right-0 pointer-events-none print:hidden" id="maple"></div>
